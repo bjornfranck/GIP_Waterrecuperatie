@@ -319,3 +319,6 @@
 18/05/2021 21:01:37 | The user has been redirected to Home page.
 18/05/2021 21:01:38 | The user has been redirected to Home page.
 18/05/2021 21:01:39 | The user has been redirected to Login page.
+18/05/2021 21:33:03 | The user has been redirected to Login page.
+18/05/2021 21:33:19 | The user has been redirected to Login page.
+18/05/2021 21:33:21 | The user has been redirected to Home page.
