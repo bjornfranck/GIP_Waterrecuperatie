@@ -1,0 +1,922 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FusionCharts.DataEngine</name>
+    </assembly>
+    <members>
+        <member name="T:FusionCharts.DataEngine.DataDrillConfiguration">
+            <summary>
+            Stroe Drill down configuration
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.DataDrillConfiguration.ColumnOrder">
+            <summary>
+            type: GroupColumn. Store column name and Dateparts(if any) to drill down in order
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.DataDrillConfiguration.AggregateFunction">
+            <summary>
+            type: Aggregation. Apply aggregate function in order to drill down 
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.DataSourcesStore">
+            <summary>
+            Represnt the configuration to store data source configuration
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataSourcesStore.Add(FusionCharts.DataSourceConfig)">
+            <summary>
+            Accepts configuration of available data sources in FusionCharts DataEngine and store them. 
+            </summary>
+            <param name="source">
+            Configuration of available data sources in FusionCharts DataEngine
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataSourcesStore.Finalize">
+            <summary>
+            Destroy the object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataSourcesStore.Dispose">
+            <summary>
+            Dispose object
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.Schema">
+            <summary>
+            Represent the configuration for DataModel schema
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.Schema.ColumnName">
+            <summary>
+            name of field
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.Schema.ColumnCaption">
+            <summary>
+            Caption of the field
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.Schema.ColumnDataType">
+            <summary>
+            DataType of the field
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.Schema.OriginalDataType">
+            <summary>
+            if date parts grouping, applied the column type got changed. column type of Original field
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.Schema.AppliedDateParts">
+            <summary>
+            if any DatePart grouping is applied
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.Schema.Dispose(System.Boolean)">
+            <param name="disposing"></param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.Schema.Finalize">
+            <summary>
+            Destroy object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.Schema.Dispose">
+            <summary>
+            Dispose object
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.DataModel">
+            <summary>
+            Retrive data from your source, perform operations, slice and dice data and store the resultant data
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.DataModel.DataSources">
+            <summary>
+            store configuration of data sources, from where data to be retrieved
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.DataModel.ColumnSchema">
+            <summary>
+             column name, column caption ,column data type and date parts
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.DataModel.ParentModel">
+            <summary>
+            If this is from another DataModel, then instance of that model
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.DataModel.Culture">
+            <summary>
+            Set culture for Date time Parse. By default it is Invariant culture. 
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.DataModel.PageSize">
+            <summary>
+            Set pagination. Maximum item limit per page
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.DataModel.Data">
+            <summary>
+            type: DataTable. 
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.DataModel.DataSourceDateFormat">
+            <summary>
+            Format for all DateTime fields of DataModel
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.DataModel.DrillDown">
+            <summary>        
+            Store column order and aggregate function to drill down your data
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.#ctor">
+            <summary>
+            Create an instance of DataModel
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.SelectColumn(System.String[])">
+            <summary>
+            Return an instance of DataModel only with the data of selected columns
+            </summary>
+            <param name="columns">
+            type : string[] represents fields name, to be extracted
+            </param>
+            <returns>
+            DataModel with Data from selected fields
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.TopRecords(System.Int32)">
+            <summary>
+            Returns an instance of DataModel with 'N' number of rows from top
+            </summary>
+            <param name="rows">
+            type: int, represents number of records to be extraced from top
+            </param>
+            <returns>
+            DataModel 
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.Where(System.String)">
+            <summary>
+            Returns an instance of DataModel with rows, which satify the filter query
+            </summary>
+            <param name="filterExpression">
+            type: string, represents the  filter query to be applied on each row of data
+            </param>
+            <returns>
+            DataModel 
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.GroupBy(FusionCharts.DataEngine.GroupColumn)">
+            <summary>
+            Returns an instance of DataModel with grouped data
+            </summary>
+            <param name="groupColumns">
+            type: GroupColumn, represents columns name and date part grouping(if applicable) to be grouped by
+            </param>
+            <returns>
+            DataModel 
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.GroupBy(FusionCharts.DataEngine.GroupColumn[])">
+            <summary>
+            Returns an instance of DataModel with grouped data
+            </summary>
+            <param name="groupColumns">
+            type: GroupColumn[], represents columns name and date part grouping(if applicable) to be grouped by
+            </param>
+            <returns>
+            DataModel 
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.OrderBy(FusionCharts.DataEngine.SortColumn)">
+            <summary>
+            Returns an instance of DataModel where data are sorted in ascending or descending order
+            </summary>
+            <param name="sortColumns">
+            type: SortColumn, represents columns name with sorting order
+            </param>
+            <returns>
+            DataModel 
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.OrderBy(FusionCharts.DataEngine.SortColumn[])">
+            <summary>
+            Returns an instance of DataModel where data are sorted in ascending or descending order
+            </summary>
+            <param name="sortColumns">
+            type: SortColumn[], represents columns name sorting order
+            </param>
+            <returns>
+            DataModel 
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.GroupingWithAggregation(FusionCharts.DataEngine.GroupColumn,FusionCharts.DataEngine.Aggregation)">
+            <summary>
+            Apply grouping as well as aggregation and returns a DataModel with new resultant data
+            </summary>
+            <param name="groupColumns">
+            type: GroupColumn, represents column name and date parts to be applied on data to perform grouping
+            </param>
+            <param name="aggregations">
+            type: Aggregation, represetns field name with aggregation function to be applied
+            </param>
+            <returns>
+            DataModel
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.Aggregate(FusionCharts.DataEngine.Aggregation)">
+            <summary>
+            Returns an instance of DataModel with aggregated data
+            </summary>
+            <param name="aggregations">
+            type: Aggregation, represents columns name and aggregation function to be applied on  them
+            </param>
+            <returns>
+            DataModel 
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.Aggregate(FusionCharts.DataEngine.Aggregation[])">
+            <summary>
+            Returns an instance of DataModel with aggregated data
+            </summary>
+            <param name="aggregations">
+            type: Aggregation[], represents columns name and aggregation function to be applied on  them
+            </param>
+            <returns>
+            DataModel 
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.Pivot(FusionCharts.DataEngine.GroupColumn,FusionCharts.DataEngine.GroupColumn,FusionCharts.DataEngine.Aggregation)">
+            <summary>
+            Apply pivot operation and returns a DataModel with this grouped and aggregated pivot data
+            </summary>
+            <param name="row">
+            type: GroupColumn,represents row field name to be grouped
+            </param>
+            <param name="column">
+            type GroupColumn, represents the pivot field name and DateParts
+            </param>
+            <param name="aggregate">
+            type: Aggregation, represents fields name with  aggregation function to be applied
+            </param>
+            <returns>
+            DataModel
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.AddNewCalculatedColumns(FusionCharts.DataEngine.CalculatedColumns)">
+            <summary>
+            Add new column based on user given calcultion expression and returns a DataModel
+            </summary>
+            <param name="calculatedColumnConfig">
+            type: CalculatedColumns, represents  calcuated expressions with new column name
+            </param>
+            <returns>
+            DataModel
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.GetItemdFromPages(System.Int32[])">
+            <summary>
+            If page size is given, extracted data only from given page numbers, and returns a DataModel only with those records
+            </summary>
+            <param name="pages">
+            type: int[], represents page number, from where data should be extracted
+            </param>
+            <returns>
+            DataModel
+            </returns>        
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.DrillDownData(System.String)">
+            <summary>
+            Drill down your data by one level
+            </summary>
+            <param name="value">
+            type: string. drill donwn to the next level of this value
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.DrillUpData">
+            <summary>
+            Drill up your data by one level
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.Finalize">
+            <summary>
+            Destroy the DataModel object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.DataModel.Dispose">
+            <summary>
+            Dispose the DataModel object
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.Aggregation">
+            <summary>
+            Class to represent the aggregation configuration
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.Aggregation.Function">
+            <summary>
+            function to be applied to aggregate a field
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.Aggregation.Function.COUNT">
+            <summary>
+            Count number of records
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.Aggregation.Function.SUM">
+            <summary>
+            Sum of all records
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.Aggregation.Function.AVERAGE">
+            <summary>
+            Average of all records
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.Aggregation.Function.MIN">
+            <summary>
+            Lowest value record
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.Aggregation.Function.MAX">
+            <summary>
+            Highest value record
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.Aggregation.#ctor">
+            <summary>
+            Create an instance
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.Aggregation.#ctor(System.String,FusionCharts.DataEngine.Aggregation.Function)">
+            <summary>
+            Create an instance
+            </summary>
+            <param name="columnName">
+            type : string, represents the field to be aggregated
+            </param>
+            <param name="function">
+            type: Function enum, aggregation function to be applied
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.Aggregation.Add(System.String,FusionCharts.DataEngine.Aggregation.Function)">
+            <summary>
+            store field name with aggregation function
+            </summary>
+            <param name="columnName">
+            type: string, aggregate field name
+            </param>
+            <param name="function">
+            type Function enum, which function to be applied to aggregate the field
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.Aggregation.ElementAt(System.Int32)">
+            <summary>
+             Returns the aggregated field name with applied aggregation function from the specific position
+            </summary>
+            <param name="position">
+            type: int, returns the element from this position
+            </param>
+            <returns>
+            return key value pair of field name and aggregated function
+            </returns>
+        </member>
+        <member name="P:FusionCharts.DataEngine.Aggregation.Count">
+            <summary>
+            Return total no of aggregtae field configuration
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.Aggregation.Finalize">
+            <summary>
+            Destroy the object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.Aggregation.Dispose">
+            <summary>
+            Dispose object
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.CalculatedColumns">
+            <summary>
+            Class to represent calculted column configuration
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.CalculatedColumns.Add(System.String,System.String)">
+            <summary>
+            Add Mathematical expression to generate new column, and Name of the new column
+            </summary>
+            <param name="query">
+            type: string, represents the calculation expression to genrate new column
+            </param>
+            <param name="columnName">
+            type: string, name of the new column
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.CalculatedColumns.Finalize">
+            <summary>
+            Destroy the object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.CalculatedColumns.Dispose">
+            <summary>
+            Dispose object 
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.CalculatedColumns.#ctor">
+            <summary>
+            create an instance
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.CalculatedColumns.#ctor(System.String,System.String)">
+            <summary>
+            create an instance
+            </summary>
+            <param name="expr">
+            type: string, expression to generate new column
+            </param>
+            <param name="columnName">
+            type: string, name of the new column
+            </param>
+        </member>
+        <member name="T:FusionCharts.DataEngine.GroupColumn">
+            <summary>
+            Class to represent grouping column configuration
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.GroupColumn.DateGrouping">
+            <summary>
+            Date parts. Apply date grouping
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.GroupColumn.DateGrouping.NONE">
+            <summary>
+            Don't format to any  date time components
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.GroupColumn.DateGrouping.YEAR">
+            <summary>
+            Format each date field by year component
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.GroupColumn.DateGrouping.HALFYEAR">
+            <summary>
+            Check date by half year and format each date field
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.GroupColumn.DateGrouping.QUARTER">
+            <summary>
+            Check date by quarter and format each date field
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.GroupColumn.DateGrouping.MONTH">
+            <summary>
+            Format each date field by month component
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.GroupColumn.DateGrouping.DAY">
+            <summary>
+            Format each date field by date component
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.GroupColumn.DateGrouping.HOUR">
+            <summary>
+            Format each date field by hour component
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.GroupColumn.DateGrouping.MINUTE">
+            <summary>
+            Format each date field by minute component
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.GroupColumn.DateGrouping.SECOND">
+            <summary>
+            Format each date field by second component
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.GroupColumn.DateGrouping.MILLISECOND">
+            <summary>
+            Format each date field by second component
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.GroupColumn.#ctor">
+            <summary>
+            Create an instance
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.GroupColumn.#ctor(System.String)">
+            <summary>
+            Create an instance
+            </summary>
+            <param name="columnName">
+            type: string, group column name
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.GroupColumn.#ctor(System.String,FusionCharts.DataEngine.GroupColumn.DateGrouping)">
+            <summary>
+            Create an instance
+            </summary>
+            <param name="columnName">
+            type: string, group column name
+            </param>
+            <param name="dateGrouping">
+            type: DateGrouping enum, first convert the field by this date componet then apply grouping
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.GroupColumn.Add(System.String,FusionCharts.DataEngine.GroupColumn.DateGrouping)">
+            <summary>
+            Add group by configuration
+            </summary>
+            <param name="columnName">
+            type: string, group column name
+            </param>
+            <param name="dateGrouping">
+            type: DateGrouping enum, first convert the field by this date componet then apply grouping
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.GroupColumn.Add(System.String)">
+            <summary>
+            Add group by configuration
+            </summary>
+            <param name="columnName">
+            type: string, group column name
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.GroupColumn.ElementAt(System.Int32)">
+            <summary>
+            Returns a group column name with corresponding date part from specific position
+            </summary>
+            <param name="position">
+            type: int, the index of group column
+            </param>
+            <returns>
+            Key value pair of field name with corresponding date parts
+            </returns>
+        </member>
+        <member name="P:FusionCharts.DataEngine.GroupColumn.Count">
+            <summary>
+            Return total number of group field
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.GroupColumn.Finalize">
+            <summary>
+            Destroy the object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.GroupColumn.Dispose">
+            <summary>
+            Dispose object
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.SortColumn">
+            <summary>
+            Class to represent sort column configuration
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.SortColumn.Order">
+            <summary>
+            Order to sort a field
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.SortColumn.Order.ASC">
+            <summary>
+            Sort values in ascending order
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataEngine.SortColumn.Order.DESC">
+            <summary>
+            Sort values in descending order
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.SortColumn.#ctor">
+            <summary>
+            Create an instance
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.SortColumn.#ctor(System.String)">
+            <summary>
+            Create an instance
+            </summary>
+            <param name="columnName">
+            type: string, the field to be sorted
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.SortColumn.#ctor(System.String,FusionCharts.DataEngine.SortColumn.Order)">
+            <summary>
+            Create an instance
+            </summary>
+            <param name="columnName">
+            type: string, the field to be sorted
+            </param>
+            <param name="order">
+            type Order enum, field to be sorted in which order
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.SortColumn.Add(System.String,FusionCharts.DataEngine.SortColumn.Order)">
+            <summary>
+            store field name and sorting order
+            </summary>
+            <param name="columnName">
+            type: string, field name
+            </param>
+            <param name="order">
+            type: Order enum, in which order the field shoud be sorted
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.SortColumn.Add(System.String)">
+            <summary>
+            store field name to sort
+            </summary>
+            <param name="columnName">
+            type: string, field name
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.SortColumn.Finalize">
+            <summary>
+            Destroy object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.SortColumn.Dispose">
+            <summary>
+            Dispose the object
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.CsvFileSource">
+            <summary>
+            Class to represnt csv source file configuration
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.CsvFileSource.#ctor(System.String)">
+            <summary>
+            Create an instance
+            </summary>
+            <param name="localFilePath">
+            path of the local csv file
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.CsvFileSource.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Create an instance
+            </summary>
+            <param name="filePath">
+            Path of the file if it is in other network location,
+            </param>
+            <param name="networkUserName">
+            type: string, user name of the network location
+            </param>
+            <param name="networkPassword">
+            type: string, if the network location has a password
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.CsvFileSource.Read">
+            <summary>
+            Read data from source csv file
+            </summary>
+            <returns>
+            DataTable
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.CsvFileSource.Finalize">
+            <summary>
+            Destroy object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.CsvFileSource.Dispose">
+            <summary>
+            Dispose the object
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.FileSystem">
+            <summary>
+            Parent class for every file system base source configuration class
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.FileSystem.FilePath">
+            <summary>
+            Path of the source file
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.FileSystem.NetWorkUserName">
+            <summary>
+            If file resides in other netwrok location, user name of that network location
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataEngine.FileSystem.NetWorkPassword">
+            <summary>
+            If file resides in other netwrok location, password of that network location
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.JsonFileSource">
+            <summary>
+            Parent class for json file source configuration class
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.JsonFileSource.#ctor(System.String)">
+            <summary>
+            create an instance
+            </summary>
+            <param name="localFilePath">
+            type: string, file path of local file
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.JsonFileSource.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Create an instance
+            </summary>
+            <param name="filePath">
+            Path of the file if it is in other network location,
+            </param>
+            <param name="networkUserName">
+            type: string, user name of the network location
+            </param>
+            <param name="networkPassword">
+            type: string, if the network location has a password
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.JsonFileSource.Read">
+            <summary>
+            Read data from source json file
+            </summary>
+            <returns>
+            DataTable
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataEngine.JsonFileSource.Finalize">
+            <summary>
+            Destroy object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.JsonFileSource.Dispose">
+            <summary>
+            Dispose the object
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataEngine.MsSqlClass">
+            <summary>
+            Parent class for MsSql source configuration class
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.MsSqlClass.#ctor(System.String,System.String,System.String,System.String,FusionCharts.DataBaseClass.SourceType,System.String)">
+            <summary>
+            Create an instance for SQL authentication
+            </summary>
+            <param name="username">
+            type: string, MsSql user name
+            </param>
+            <param name="password">
+            type: string, MsSql password
+            </param>
+            <param name="servername">
+            type: string, server name
+            </param>
+            <param name="databasename">
+            type: string, DataBase name
+            </param>
+            <param name="sourcetype">
+            type: SourceType enum, whether to fetch data from Table View or by user given query
+            </param>
+            <param name="sourcename">
+            type: string, table or view name or the query to fetch data
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.MsSqlClass.#ctor(System.String,System.String,FusionCharts.DataBaseClass.SourceType,System.String)">
+            <summary>
+            Create an instance for windows authentication
+            </summary>
+            <param name="servername">
+            type: string, server name
+            </param>
+            <param name="databasename">
+            type: string, DataBase name
+            </param>
+            <param name="sourcetype">
+            type: SourceType enum, whether to fetch data from Table View or by user given query
+            </param>
+            <param name="sourcename">
+            type: string, table or view name or the query to fetch data
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.MsSqlClass.#ctor(System.String,FusionCharts.DataBaseClass.SourceType,System.String)">
+            <summary>
+            Create an instance, if user is providing the connection string
+            </summary>
+            <param name="connectionstring">
+            Connetionc string to connect to the data base
+            </param>
+            <param name="sourcetype">
+            type: SourceType enum, whether to fetch data from Table View or by user given query
+            </param>
+            <param name="sourcename">
+            type: string, table or view name or the query to fetch data
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.MsSqlClass.Finalize">
+            <summary>
+            Destpry the object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.MsSqlClass.Dispose">
+            <summary>
+            Dispose object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.MsSqlClass.Read">
+            <summary>
+            Read data from previously connected data base
+            </summary>
+            <returns>
+            DataTable
+            </returns>
+        </member>
+        <member name="T:FusionCharts.DataEngine.StaticSource">
+            <summary>
+            Parent class for static source configuration class
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.StaticSource.#ctor(System.Data.DataTable)">
+            <summary>
+            Create an instance
+            </summary>
+            <param name="sourceTable">
+            type: DataTable, read data from this table
+            </param>
+        </member>
+        <member name="M:FusionCharts.DataEngine.StaticSource.Finalize">
+            <summary>
+            Destroy the object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.StaticSource.Dispose">
+            <summary>
+            Dispose object
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataEngine.StaticSource.Read">
+            <summary>
+            Read data from source
+            </summary>
+            <returns>
+            DataTable
+            </returns>
+        </member>
+        <member name="T:FusionCharts.DataOperationsConfig">
+            <summary>
+            Store configuration of each operation
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataBaseClass">
+            <summary>
+            Parent class for every data base source configuration class
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataBaseClass.SourceType">
+            <summary>
+            In data base from where to fetch data
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataBaseClass.SourceType.TABLE">
+            <summary>
+            If data is in a table
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataBaseClass.SourceType.VIEW">
+            <summary>
+            If data is in a view
+            </summary>
+        </member>
+        <member name="F:FusionCharts.DataBaseClass.SourceType.QUERY">
+            <summary>
+            If user provides the query to fetch
+            </summary>
+        </member>
+        <member name="T:FusionCharts.DataSourceConfig">
+            <summary>
+            Parent class of all data source configuration class
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataSourceConfig.DateFormat">
+            <summary>
+            Set date format for data source
+            </summary>
+        </member>
+        <member name="P:FusionCharts.DataSourceConfig.Culture">
+            <summary>
+            Set the culture for date parsing.
+            </summary>
+        </member>
+        <member name="M:FusionCharts.DataSourceConfig.Read">
+            <summary>
+            Read data from data source
+            </summary>
+            <returns>
+            DataTable
+            </returns>
+        </member>
+        <member name="M:FusionCharts.DataSourceConfig.Dispose">
+            <summary>
+            dispose the object
+            </summary>
+        </member>
+    </members>
+</doc>
