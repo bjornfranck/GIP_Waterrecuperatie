@@ -10,6 +10,8 @@ using System.IO;
 using System.Data;
 using System.Data.OleDb;
 using System.Web.Hosting;
+using System.Configuration;
+using System.Web.Configuration;
 
 namespace GIP_Waterrecuperatie
 {
@@ -24,7 +26,6 @@ namespace GIP_Waterrecuperatie
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-
             string filePath = Variables.filePath;
             string username_webpage = tbUsername.Text;
             string password_webpage = tbPassword.Text;
