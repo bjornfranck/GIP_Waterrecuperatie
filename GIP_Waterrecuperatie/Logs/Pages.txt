@@ -408,3 +408,13 @@
 29/05/2021 22:02:08 | The user has been redirected to Temperature page.
 29/05/2021 22:02:09 | The user has been redirected to Networkcamera page.
 29/05/2021 22:02:10 | The user has been redirected to Login page.
+31/05/2021 19:51:18 | The user has been redirected to Login page.
+31/05/2021 19:51:19 | The user has been redirected to Login page.
+31/05/2021 19:51:21 | The user has been redirected to Home page.
+31/05/2021 19:51:29 | The user has been redirected to levelTap page.
+31/05/2021 19:51:31 | The user has been redirected to levelRain page.
+31/05/2021 19:51:32 | The user has been redirected to levelBath page.
+31/05/2021 19:51:32 | The user has been redirected to Consumption page.
+31/05/2021 19:51:33 | The user has been redirected to Temperature page.
+31/05/2021 19:51:35 | The user has been redirected to Networkcamera page.
+31/05/2021 19:51:36 | The user has been redirected to Login page.
